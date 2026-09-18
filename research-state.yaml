@@ -1,0 +1,59 @@
+project: IRForge-Sim
+status: h6_confirmatory_complete_negative_result
+question: >-
+  Which compositions of infrared image-formation and detector degradations cause
+  silent small-target failures, and can a shift-aware selective gate reduce
+  conditional error on held-out compositions?
+claim_boundary: synthetic single-frame LWIR-like imagery; no fielded sensor claim
+current_loop: h6_reporting
+hypotheses:
+  H1:
+    status: failed_confirmatory
+    prediction: composed shifts cause more high-confidence errors than matched single shifts
+  H2:
+    status: passed_confirmatory
+    prediction: calibrated confidence improves ECE but is insufficient for selective risk under held-out compositions
+  H3:
+    status: failed_confirmatory
+    prediction: confidence plus image-quality shift features lowers selective risk at matched coverage
+  H4:
+    status: failed_confirmatory
+    prediction: quality-aware risk improves AURC and error at exactly 80 percent pooled coverage
+  H5:
+    status: failed_replication_with_secondary_effect
+    prediction: registered quality-only ablation reproduces at least 10 percent AURC reduction on new seeds
+  H6_A:
+    status: failed_confirmatory_coverage
+    prediction: sequence CRC controls matched-drift false release at 0.10 with Wilson upper at most 0.15 and frame coverage at least 0.15
+  H6_B:
+    status: failed_confirmatory_shift_transfer
+    prediction: temporal CRC reduces held-out sequence false release at least 20 percent versus confidence CRC within 10 percentage points coverage
+  H6_C:
+    status: failed_confirmatory_interval_crossed_zero
+    prediction: temporal CRC lowers paired frame error versus fixed confidence at matched coverage with bootstrap interval below zero
+  H6_D:
+    status: passed_confirmatory
+    prediction: causal temporal residual improves Pd over classical frame baselines in at least two held-out families within a twofold false-alarm budget
+  H6_E:
+    status: passed_confirmatory
+    prediction: calibration split, artifact hashes, matrix completeness and deterministic replay all pass
+primary_metric: conditional target-level error at calibration-defined coverage
+secondary_metrics: [Pd, false_alarms_per_image, F1, ECE, AURC, silent_failure_rate]
+confirmatory_seed_range: [1000, 1079]
+exploratory_seed_range: [0, 239]
+h6_calibration_sequence_seeds: [3000, 3039]
+h6_matched_sequence_seeds: [3500, 3539]
+h6_heldout_sequence_seeds: [4000, 4079]
+h6_confirmatory:
+  core_commit: 2456fe1
+  matched_sequences: 120
+  heldout_sequences: 240
+  frames_per_sequence: 12
+  rows: 34560
+  integrity_checks_pass: true
+  registered_success: false
+  matched_temporal_crc_sequence_risk: 0.025
+  matched_temporal_crc_frame_coverage: 0.0479
+  heldout_temporal_crc_sequence_risk: 0.1542
+  heldout_confidence_crc_sequence_risk: 0.1292
+next_action: publish the H6 exchangeability and coverage failure boundary; future work requires online or shift-aware recalibration on measured sequences

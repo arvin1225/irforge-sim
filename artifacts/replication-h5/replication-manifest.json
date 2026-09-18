@@ -1,0 +1,7 @@
+{
+  "benchmark_manifest_sha256": "930d298bd3b3746984e71233ff5026b864ad79c71a09db17018bfa86bc5bb539",
+  "decision_rule": "relative_aurc_reduction >= 0.10 and paired_ci_high < 0",
+  "protocol": "experiments/H5-quality-only-replication/protocol.md",
+  "replication_summary_sha256": "bbd3627088085bd557217d02c76f609e77cf52d5498340dcee68de704d54ef42",
+  "study": "H5-quality-only-replication"
+}

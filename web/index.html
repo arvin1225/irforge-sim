@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#071c18" />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='24' fill='%23071c18'/%3E%3Ctext x='50' y='66' text-anchor='middle' font-size='44' fill='%23ffb46b'%3EIR%3C/text%3E%3C/svg%3E" />
+    <meta name="description" content="Interactive audit lab for composed infrared sensor-shift failures." />
+    <title>IRForge-Sim — Infrared Sensor Bench</title>
+  </head>
+  <body>
+    <div class="shell">
+      <header class="topbar">
+        <div class="brand-lockup">
+          <div class="brand-mark"><span>IR</span><i></i></div>
+          <div><strong>IRFORGE–SIM</strong><small>INFRARED SENSOR BENCH</small></div>
+        </div>
+        <div class="runline">
+          <span class="live-dot"></span>
+          <span>DETERMINISTIC REPLAY</span>
+          <b>8–12 μm LWIR SURROGATE</b>
+          <span>8,800 AUDITED ROWS</span>
+        </div>
+        <a class="code-link" href="study.html">Sequence comparison ↗</a>
+      </header>
+
+      <aside class="control-rail">
+        <section>
+          <div class="section-kicker">COMPOSED SHIFT FAMILY</div>
+          <div id="family-list" class="family-list"></div>
+        </section>
+        <section>
+          <div class="section-kicker row"><span>DISPLAY PERTURBATIONS</span><button id="reset-controls">RESET</button></div>
+          <label class="range-row"><span>Transmission <output id="transmission-value">1.00×</output></span><input id="transmission" type="range" min="0.35" max="1.1" step="0.01" value="1" /></label>
+          <label class="range-row"><span>Optical blur <output id="blur-value">0.0 px</output></span><input id="blur" type="range" min="0" max="4" step="0.1" value="0" /></label>
+          <label class="range-row"><span>Read noise <output id="noise-value">0.0%</output></span><input id="noise" type="range" min="0" max="0.22" step="0.005" value="0" /></label>
+          <label class="range-row"><span>Partial defects <output id="defects-value">0.00%</output></span><input id="defects" type="range" min="0" max="0.03" step="0.001" value="0" /></label>
+          <label class="range-row"><span>Structured clutter <output id="clutter-value">0.00</output></span><input id="clutter" type="range" min="0" max="0.5" step="0.01" value="0" /></label>
+          <p class="control-note">These controls change the preview. Charts below use the recorded experiment.</p>
+        </section>
+        <section>
+          <div class="section-kicker">IMAGE OVERLAYS</div>
+          <label class="toggle"><input id="show-target" type="checkbox" checked /><i></i><span>Latent target</span></label>
+          <label class="toggle"><input id="show-peak" type="checkbox" checked /><i></i><span>Detector peak</span></label>
+          <label class="toggle"><input id="show-grid" type="checkbox" checked /><i></i><span>Focal-plane grid</span></label>
+          <label class="toggle"><input id="thermal-palette" type="checkbox" checked /><i></i><span>False-colour radiance</span></label>
+        </section>
+        <div class="scope-card">
+          <span>SCOPE / SYNTHETIC ONLY</span>
+          <p>Synthetic LWIR images with controlled blur, noise and defects.</p>
+        </div>
+      </aside>
+
+      <main class="workspace">
+        <section class="mission-head">
+          <div>
+            <span class="eyebrow">FRAME <b id="frame-index">01</b> / <span id="frame-total">10</span> · CONFIRMATORY SEEDS</span>
+            <h1>Infrared target detection<br /><em>under changing sensor conditions.</em></h1>
+          </div>
+          <div class="mission-tags"><span id="active-family-tag">BLUR + NOISE</span><span>SEED <b id="active-seed">1000</b></span><span id="truth-tag">TARGET PRESENT</span></div>
+        </section>
+
+        <section class="sensor-stage">
+          <div class="sensor-toolbar">
+            <div><span class="rec-dot"></span> FPA / COMPOSED INPUT</div>
+            <div class="toolbar-center"><span>64 × 64</span><span>12 BIT</span><span>FIXED GAIN</span></div>
+            <div id="clock">T+00:00.000</div>
+          </div>
+          <div class="sensor-frame">
+            <canvas id="sensor-canvas" width="720" height="720"></canvas>
+            <div class="reticle-corners" aria-hidden="true"></div>
+            <div class="scanline" aria-hidden="true"></div>
+            <div class="frame-readout top-left"><span>τ</span><b id="tau-readout">0.58</b><span>PSF σ</span><b id="psf-readout">1.20</b></div>
+            <div class="frame-readout bottom-left"><span>ΔT LATENT</span><b id="contrast-readout">—</b><span>QUALITY RISK</span><b id="risk-readout">—</b></div>
+            <div id="frame-verdict" class="frame-verdict">ERROR / REJECTED</div>
+          </div>
+          <div class="sample-timeline">
+            <button id="previous-frame" aria-label="Previous frame">←</button>
+            <div id="sample-strip" class="sample-strip"></div>
+            <button id="next-frame" aria-label="Next frame">→</button>
+          </div>
+        </section>
+
+        <section class="lower-grid">
+          <article class="panel risk-panel">
+            <header><div><span class="section-kicker">SELECTIVE PREDICTION</span><h2>Risk–coverage envelope</h2></div><div class="study-switch"><button data-study="confirmation" class="active">CONFIRM</button><button data-study="replication">REPLICATE</button></div></header>
+            <svg id="risk-chart" viewBox="0 0 720 260" role="img" aria-label="Risk coverage curves"></svg>
+            <div class="curve-legend"><span class="confidence">Confidence</span><span class="blend">Confidence + quality</span><span class="quality">Quality only</span><i>↓ lower error is better</i></div>
+          </article>
+          <article class="panel family-panel">
+            <header><div><span class="section-kicker">FAILURE ATLAS</span><h2>80% operating region</h2></div><span class="metric-note">Δ QUALITY − CONFIDENCE</span></header>
+            <div id="family-matrix" class="family-matrix"></div>
+            <p class="microcopy">Global H5 failed. Negative cells identify narrower regions where quality ordering removed more errors.</p>
+          </article>
+        </section>
+      </main>
+
+      <aside class="audit-rail">
+        <section class="decision-block">
+          <span class="section-kicker">REPLICATION RESULT</span>
+          <div class="decision-title"><strong>Below target</strong><span>H5</span></div>
+          <p>Quality-only AURC improved by <b>9.41%</b>, below the frozen 10% gate; the paired interval crossed zero.</p>
+        </section>
+        <section class="metric-grid">
+          <div><span>QUALITY AURC</span><strong>0.406</strong><small>replication</small></div>
+          <div><span>CONF. AURC</span><strong>0.448</strong><small>replication</small></div>
+          <div><span>Δ RISK @80</span><strong class="positive">−5.0</strong><small>percentage points</small></div>
+          <div><span>PAIRED CI @80</span><strong>[−8.1, −1.6]</strong><small>percentage points</small></div>
+        </section>
+        <section class="hypothesis-section">
+          <div class="section-kicker">EXPERIMENT CHECKS</div>
+          <div id="hypothesis-list" class="hypothesis-list"></div>
+        </section>
+        <section class="causal-chain">
+          <div class="section-kicker">IMAGE FORMATION</div>
+          <div class="chain-step"><i>01</i><div><b>Radiance</b><span>Planck-band target / background contrast</span></div></div>
+          <div class="chain-line"></div>
+          <div class="chain-step"><i>02</i><div><b>Sensor transfer</b><span>atmosphere → PSF → noise → FPN</span></div></div>
+          <div class="chain-line"></div>
+          <div class="chain-step"><i>03</i><div><b>Detection</b><span>classical + shallow learned baselines</span></div></div>
+          <div class="chain-line"></div>
+          <div class="chain-step"><i>04</i><div><b>Selective gate</b><span>confidence / observable quality / blend</span></div></div>
+        </section>
+        <section class="integrity-card"><span class="integrity-icon">✓</span><div><b>REPLAY CHECKS PASSED</b><span>hashes · split isolation · exact replay · zero-contrast control</span></div></section>
+      </aside>
+    </div>
+    <button id="v2-evidence-trigger" class="v2-evidence-trigger" type="button"><i></i><span>TEMPORAL DRIFT STUDY</span></button>
+    <aside id="v2-evidence-drawer" class="v2-evidence-drawer" aria-label="V2 confirmatory evidence">
+      <header><div><span>12-FRAME SEQUENCES</span><strong data-v2-study>LOADING EVIDENCE</strong></div><button id="v2-evidence-close" type="button" aria-label="Close evidence">CLOSE</button></header>
+      <div class="v2-verdict"><span>REPLICATION RESULT</span><strong data-v2-status>--</strong></div>
+      <div class="v2-meta" data-v2-meta></div><div class="v2-metrics" data-v2-metrics></div>
+      <section class="v2-ledger"><span>EXPERIMENT CHECKS</span><div data-v2-hypotheses></div></section>
+      <section class="v2-finding"><span>OBSERVED BEHAVIOR</span><p data-v2-finding>Loading recorded sequence results.</p></section>
+      <footer><div><span>ARTIFACT SHA256</span><code data-v2-hash>--</code></div><nav data-v2-links></nav></footer>
+    </aside>
+    <script type="module" src="/src/main.js"></script>
+    <script type="module" src="/src/evidence.js"></script>
+  </body>
+</html>

@@ -1,0 +1,39 @@
+name: ci
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+      - run: python -m pip install -e ".[dev]"
+      - run: python -m unittest discover -s tests -v
+      - run: python scripts/analyze_sequence_pairs.py --out /tmp/sequence-pair-analysis
+      - run: python scripts/validate_artifact.py --artifact artifacts/confirmatory
+      - run: python scripts/validate_artifact.py --artifact artifacts/replication-h5
+      - run: python scripts/validate_h6_artifact.py artifacts/confirmatory-h6
+      - run: python -m build
+      - run: python scripts/render_study.py
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 11.19.0
+          run_install: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: pnpm
+          cache-dependency-path: web/pnpm-lock.yaml
+      - run: pnpm install --frozen-lockfile
+        working-directory: web
+      - run: pnpm run build
+        working-directory: web

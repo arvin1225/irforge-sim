@@ -1,0 +1,43 @@
+{
+  "H5_pass": false,
+  "confidence_selective": {
+    "accepted_errors": 200,
+    "aurc": 0.4481922769211776,
+    "conditional_error": 0.5,
+    "coverage": 1.0,
+    "ece": 0.06940735933158153,
+    "false_alarms_per_image": 0.1425,
+    "n": 400,
+    "pd": 0.11,
+    "silent_failure_rate": 0.0,
+    "target_f1": 0.18032786885245902
+  },
+  "fixed_80pct_coverage_diagnostic": {
+    "ci_high": -0.015625,
+    "ci_low": -0.08125000000000004,
+    "coverage": 0.8,
+    "difference": -0.050000000000000044,
+    "risk_a": 0.44375,
+    "risk_b": 0.49375
+  },
+  "paired_aurc_difference": {
+    "ci_high": 0.018535921528614937,
+    "ci_low": -0.09978977146838772,
+    "difference": -0.04218742543430343
+  },
+  "quality_selective": {
+    "accepted_errors": 142,
+    "aurc": 0.40600485148687415,
+    "conditional_error": 0.445141065830721,
+    "coverage": 0.7975,
+    "ece": 0.06940735933158153,
+    "false_alarms_per_image": 0.1425,
+    "n": 400,
+    "pd": 0.11,
+    "silent_failure_rate": 0.0,
+    "target_f1": 0.18032786885245902
+  },
+  "relative_aurc_reduction": 0.09412796160635946,
+  "seed_start": 2000,
+  "seeds_per_family": 80
+}

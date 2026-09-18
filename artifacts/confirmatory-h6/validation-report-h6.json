@@ -1,0 +1,110 @@
+{
+  "checks": {
+    "benchmark_hash": true,
+    "code_hash": true,
+    "complete_matrix": true,
+    "crc_calibration_contract": true,
+    "finite_metrics": true,
+    "heldout_replay": true,
+    "hypothesis_reproduction": true,
+    "matched_replay": true,
+    "row_count": true,
+    "split_disjointness": true,
+    "summary_hash": true,
+    "summary_success_reproduction": true
+  },
+  "integrity": true,
+  "interpretation": "Matched-drift CRC validity and held-out robustness are separate; artifact integrity does not imply H6 success.",
+  "manifest": {
+    "acceptance_thresholds": {
+      "crc_confidence": 0.23785402274604017,
+      "crc_quality": 0.20033741331429325,
+      "crc_temporal": 0.32824604032376986,
+      "fixed80_confidence": 0.49999952454711094
+    },
+    "alpha": 0.1,
+    "artifact": "IRForge-Sim H6 temporal conformal-risk confirmation",
+    "benchmark_sha256": "6639875c9190c4d653a743f0b2f72f94e4836051f577cacb2f223dafd85a8e98",
+    "bootstrap_resamples": 5000,
+    "calibration": {
+      "families": [
+        "gain_ramp",
+        "fpn_ramp",
+        "blur_creep"
+      ],
+      "seed_start": 3000,
+      "sequences_per_family": 40
+    },
+    "code_sha256": "e632504b4022a50aa57b4ab0e5e8aa9907ec688e7c93336109b0434635b10e8e",
+    "crc_calibration": {
+      "crc_confidence": {
+        "alpha": 0.1,
+        "calibration_frame_coverage": 0.04097222222222222,
+        "calibration_loss_count": 11,
+        "corrected_risk": 0.09917355371900827,
+        "sequence_count": 120,
+        "threshold": 0.23785402274604017
+      },
+      "crc_quality": {
+        "alpha": 0.1,
+        "calibration_frame_coverage": 0.01875,
+        "calibration_loss_count": 11,
+        "corrected_risk": 0.09917355371900827,
+        "sequence_count": 120,
+        "threshold": 0.20033741331429325
+      },
+      "crc_temporal": {
+        "alpha": 0.1,
+        "calibration_frame_coverage": 0.06319444444444444,
+        "calibration_loss_count": 11,
+        "corrected_risk": 0.09917355371900827,
+        "sequence_count": 120,
+        "threshold": 0.32824604032376986
+      }
+    },
+    "deterministic_sequence_replays": {
+      "heldout/compound_aging/4007": "e2b46f7aacd2e300bcfe19c9df974c30703a30ea1e43afafd1cbe5e8e3705c86",
+      "matched/gain_ramp/3500": "ea09197f6270ec0aa3849a20d7e1de97ed1f7c321e8c07b6af9f93bc54d85317"
+    },
+    "drift_scale": 0.22607438628532034,
+    "frames_per_sequence": 12,
+    "heldout": {
+      "families": [
+        "bad_pixel_bloom",
+        "oscillatory_gain",
+        "compound_aging"
+      ],
+      "seed_start": 4000,
+      "sequences_per_family": 80
+    },
+    "matched": {
+      "families": [
+        "gain_ramp",
+        "fpn_ramp",
+        "blur_creep"
+      ],
+      "seed_start": 3500,
+      "sequences_per_family": 40
+    },
+    "methods": [
+      "local_contrast_frame",
+      "matched_filter_frame",
+      "learned_frame",
+      "temporal_residual",
+      "fixed80_confidence",
+      "crc_confidence",
+      "crc_quality",
+      "crc_temporal"
+    ],
+    "protocol": "experiments/H6-temporal-conformal-risk/protocol.md",
+    "row_count": 34560,
+    "summary_sha256": "accaae15f2d05fa315b02d45f19724357771e751deb608977571a7d6d9ba5810",
+    "temporal_detector_threshold": 0.9995,
+    "temporal_weights": {
+      "confidence": 0.25,
+      "quality": 0.5,
+      "temporal": 0.25
+    }
+  },
+  "registered_success": false
+}

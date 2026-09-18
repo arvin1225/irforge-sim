@@ -159,6 +159,8 @@ Do not overwrite the committed artifacts unless intentionally creating a new stu
 
 ## Research integrity
 
+Original local protocol and result commits are preserved in the [development history archive](docs/HISTORY.md); the first public branch is a source snapshot.
+
 - Training/calibration seeds are `<1000`; confirmation uses `1000–1079`; H5 replication uses `2000–2079`.
 - Protocol commits precede both result commits.
 - Every published matrix stores CSV/summary hashes and the executed source hash.

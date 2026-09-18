@@ -1,0 +1,185 @@
+{
+  "detectors_by_heldout_family": {
+    "bad_pixel_bloom": {
+      "learned_frame": {
+        "false_alarms_per_image": 0.13333333333333333,
+        "frame_error": 0.4354166666666667,
+        "frames": 960,
+        "target_present_pd": 0.25416666666666665
+      },
+      "local_contrast_frame": {
+        "false_alarms_per_image": 20.111458333333335,
+        "frame_error": 0.5416666666666666,
+        "frames": 960,
+        "target_present_pd": 0.9145833333333333
+      },
+      "matched_filter_frame": {
+        "false_alarms_per_image": 11.890625,
+        "frame_error": 0.48541666666666666,
+        "frames": 960,
+        "target_present_pd": 0.7125
+      },
+      "temporal_residual": {
+        "false_alarms_per_image": 20.307291666666668,
+        "frame_error": 0.5010416666666667,
+        "frames": 960,
+        "target_present_pd": 0.9145833333333333
+      }
+    },
+    "compound_aging": {
+      "learned_frame": {
+        "false_alarms_per_image": 0.3,
+        "frame_error": 0.48541666666666666,
+        "frames": 960,
+        "target_present_pd": 0.3416666666666667
+      },
+      "local_contrast_frame": {
+        "false_alarms_per_image": 12.375,
+        "frame_error": 0.56875,
+        "frames": 960,
+        "target_present_pd": 0.8604166666666667
+      },
+      "matched_filter_frame": {
+        "false_alarms_per_image": 3.4760416666666667,
+        "frame_error": 0.5,
+        "frames": 960,
+        "target_present_pd": 0.5645833333333333
+      },
+      "temporal_residual": {
+        "false_alarms_per_image": 11.639583333333333,
+        "frame_error": 0.50625,
+        "frames": 960,
+        "target_present_pd": 0.9041666666666667
+      }
+    },
+    "oscillatory_gain": {
+      "learned_frame": {
+        "false_alarms_per_image": 0.20520833333333333,
+        "frame_error": 0.4583333333333333,
+        "frames": 960,
+        "target_present_pd": 0.26458333333333334
+      },
+      "local_contrast_frame": {
+        "false_alarms_per_image": 0.9520833333333333,
+        "frame_error": 0.3260416666666667,
+        "frames": 960,
+        "target_present_pd": 0.9125
+      },
+      "matched_filter_frame": {
+        "false_alarms_per_image": 0.084375,
+        "frame_error": 0.309375,
+        "frames": 960,
+        "target_present_pd": 0.4895833333333333
+      },
+      "temporal_residual": {
+        "false_alarms_per_image": 0.08125,
+        "frame_error": 0.08854166666666667,
+        "frames": 960,
+        "target_present_pd": 0.9166666666666666
+      }
+    }
+  },
+  "heldout_matched_coverage_frame_error": {
+    "ci_high": 0.041095890410958846,
+    "ci_low": -0.23972602739726034,
+    "coverage": 0.050694444444444445,
+    "difference": -0.0958904109589041
+  },
+  "heldout_temporal_confidence_coverage_gap": 0.008333333333333331,
+  "heldout_temporal_relative_sequence_risk_reduction": -0.19354838709677413,
+  "hypotheses": {
+    "H6_A_pass": false,
+    "H6_B_pass": false,
+    "H6_C_pass": false,
+    "H6_D_pass": true
+  },
+  "registered_success": false,
+  "selectors": {
+    "heldout": {
+      "crc_confidence": {
+        "accepted_frames": 122,
+        "frame_aurc": 0.4379471935897697,
+        "frame_conditional_error": 0.47540983606557374,
+        "frame_coverage": 0.04236111111111111,
+        "sequence_false_release_probability": 0.12916666666666668,
+        "sequence_false_release_wilson_upper": 0.16895132853248204,
+        "sequence_false_releases": 31,
+        "sequences": 240
+      },
+      "crc_quality": {
+        "accepted_frames": 0,
+        "frame_aurc": 0.4400556649044949,
+        "frame_conditional_error": 1.0,
+        "frame_coverage": 0.0,
+        "sequence_false_release_probability": 0.0,
+        "sequence_false_release_wilson_upper": 0.011147431639142313,
+        "sequence_false_releases": 0,
+        "sequences": 240
+      },
+      "crc_temporal": {
+        "accepted_frames": 146,
+        "frame_aurc": 0.43673569269579715,
+        "frame_conditional_error": 0.3972602739726027,
+        "frame_coverage": 0.050694444444444445,
+        "sequence_false_release_probability": 0.15416666666666667,
+        "sequence_false_release_wilson_upper": 0.19634256582847995,
+        "sequence_false_releases": 37,
+        "sequences": 240
+      },
+      "fixed80_confidence": {
+        "accepted_frames": 2880,
+        "frame_aurc": 0.4379471935897697,
+        "frame_conditional_error": 0.4597222222222222,
+        "frame_coverage": 1.0,
+        "sequence_false_release_probability": 0.7791666666666667,
+        "sequence_false_release_wilson_upper": 0.8199611458461046,
+        "sequence_false_releases": 187,
+        "sequences": 240
+      }
+    },
+    "matched": {
+      "crc_confidence": {
+        "accepted_frames": 67,
+        "frame_aurc": 0.3293260261560918,
+        "frame_conditional_error": 0.2537313432835821,
+        "frame_coverage": 0.04652777777777778,
+        "sequence_false_release_probability": 0.08333333333333333,
+        "sequence_false_release_wilson_upper": 0.1345764480396858,
+        "sequence_false_releases": 10,
+        "sequences": 120
+      },
+      "crc_quality": {
+        "accepted_frames": 33,
+        "frame_aurc": 0.40775710744801297,
+        "frame_conditional_error": 0.3939393939393939,
+        "frame_coverage": 0.022916666666666665,
+        "sequence_false_release_probability": 0.08333333333333333,
+        "sequence_false_release_wilson_upper": 0.1345764480396858,
+        "sequence_false_releases": 10,
+        "sequences": 120
+      },
+      "crc_temporal": {
+        "accepted_frames": 69,
+        "frame_aurc": 0.31975906754490035,
+        "frame_conditional_error": 0.043478260869565216,
+        "frame_coverage": 0.04791666666666667,
+        "sequence_false_release_probability": 0.025,
+        "sequence_false_release_wilson_upper": 0.06091218455445676,
+        "sequence_false_releases": 3,
+        "sequences": 120
+      },
+      "fixed80_confidence": {
+        "accepted_frames": 1440,
+        "frame_aurc": 0.3293260261560918,
+        "frame_conditional_error": 0.40694444444444444,
+        "frame_coverage": 1.0,
+        "sequence_false_release_probability": 0.8166666666666667,
+        "sequence_false_release_wilson_upper": 0.8675635357509329,
+        "sequence_false_releases": 98,
+        "sequences": 120
+      }
+    }
+  },
+  "temporal_baseline_false_alarm_budget_pass": true,
+  "temporal_baseline_family_wins": 2
+}

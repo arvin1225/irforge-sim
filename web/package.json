@@ -1,0 +1,15 @@
+{
+  "name": "irforge-sim-audit-lab",
+  "private": true,
+  "version": "0.2.0",
+  "packageManager": "pnpm@11.19.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "7.3.6"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "study": "H6 / TEMPORAL CONFORMAL RISK",
+  "status": "NOT CONFIRMED",
+  "statusTone": "negative",
+  "rows": "34,560",
+  "tests": "21 / 21",
+  "integrity": "12 / 12",
+  "metrics": [
+    {"label": "MATCHED SEQ. RISK", "value": "2.50%", "note": "Wilson upper 6.09%", "tone": "pass"},
+    {"label": "MATCHED COVERAGE", "value": "4.79%", "note": "registered minimum 15%", "tone": "fail"},
+    {"label": "HELD-OUT SEQ. RISK", "value": "15.42%", "note": "confidence CRC was 12.92%", "tone": "fail"},
+    {"label": "TEMPORAL BASELINE", "value": "2 / 3", "note": "family Pd wins within FA budget", "tone": "pass"}
+  ],
+  "hypotheses": [
+    {"id": "H6-A", "label": "Matched risk + utility", "status": "FAIL"},
+    {"id": "H6-B", "label": "Unseen-drift robustness", "status": "FAIL"},
+    {"id": "H6-C", "label": "Matched-coverage ranking", "status": "FAIL"},
+    {"id": "H6-D", "label": "Causal temporal baseline", "status": "PASS"},
+    {"id": "H6-E", "label": "Artifact integrity", "status": "PASS"}
+  ],
+  "finding": "On matched drift, the risk bound passed but coverage was below 5%. On held-out drift, observed sequence false release was 15.42% versus 12.92% for confidence CRC. The paired difference interval includes zero; this is not evidence of a statistically resolved ranking.",
+  "artifact": "6639875c9190c4d6",
+  "links": [
+    {"label": "ANALYSIS", "href": "https://github.com/arvin1225/irforge-sim/blob/main/experiments/H6-temporal-conformal-risk/analysis.md"},
+    {"label": "SUMMARY JSON", "href": "https://github.com/arvin1225/irforge-sim/blob/main/artifacts/confirmatory-h6/summary_h6.json"},
+    {"label": "VALIDATION", "href": "https://github.com/arvin1225/irforge-sim/blob/main/artifacts/confirmatory-h6/validation-report-h6.json"}
+  ]
+}

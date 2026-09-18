@@ -1,0 +1,36 @@
+[build-system]
+requires = ["setuptools>=77", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "irforge-sim"
+version = "0.2.0"
+description = "Physics-aware infrared small-target failure-boundary simulator and selective benchmark"
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{name = "Yongkang Shi"}]
+dependencies = [
+  "numpy>=1.24",
+  "scipy>=1.10",
+  "scikit-learn>=1.3",
+]
+
+[project.optional-dependencies]
+plot = ["matplotlib>=3.8"]
+dev = ["pytest>=8", "build>=1.2"]
+
+[project.scripts]
+irforge = "irforge_sim.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/arvin1225/irforge-sim"
+Repository = "https://github.com/arvin1225/irforge-sim"
+Issues = "https://github.com/arvin1225/irforge-sim/issues"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]

@@ -1,0 +1,129 @@
+{
+  "candidate": "crc_temporal",
+  "baseline": "crc_confidence",
+  "resampling_unit": "paired sequence, stratified by family",
+  "frames_per_sequence": 12,
+  "resamples": 10000,
+  "bootstrap_seed": 20260917,
+  "analysis": "exploratory; pointwise percentile 95% intervals",
+  "regimes": {
+    "heldout": {
+      "sequences": 240,
+      "families": {
+        "bad_pixel_bloom": {
+          "sequences": 80,
+          "sequence_false_release": 0.1,
+          "frame_coverage": 0.03229166666666666,
+          "correct_release_per_frame": 0.017708333333333333
+        },
+        "compound_aging": {
+          "sequences": 80,
+          "sequence_false_release": -0.2,
+          "frame_coverage": -0.03645833333333333,
+          "correct_release_per_frame": -0.0010416666666666656
+        },
+        "oscillatory_gain": {
+          "sequences": 80,
+          "sequence_false_release": 0.175,
+          "frame_coverage": 0.029166666666666664,
+          "correct_release_per_frame": 0.008333333333333335
+        }
+      },
+      "methods": {
+        "crc_temporal": {
+          "sequence_false_release": 0.15416666666666667,
+          "frame_coverage": 0.050694444444444445,
+          "correct_release_per_frame": 0.03055555555555555,
+          "accepted_frames": 146,
+          "wrong_releases": 58,
+          "conditional_error": 0.3972602739726027
+        },
+        "crc_confidence": {
+          "sequence_false_release": 0.12916666666666668,
+          "frame_coverage": 0.042361111111111106,
+          "correct_release_per_frame": 0.02222222222222222,
+          "accepted_frames": 122,
+          "wrong_releases": 58,
+          "conditional_error": 0.47540983606557374
+        }
+      },
+      "paired_difference": {
+        "sequence_false_release": {
+          "estimate": 0.025,
+          "ci_low": -0.029166666666666667,
+          "ci_high": 0.07916666666666666
+        },
+        "frame_coverage": {
+          "estimate": 0.008333333333333333,
+          "ci_low": -0.003472222222222222,
+          "ci_high": 0.02013888888888889
+        },
+        "correct_release_per_frame": {
+          "estimate": 0.008333333333333333,
+          "ci_low": -0.00034722222222222224,
+          "ci_high": 0.017013888888888887
+        }
+      }
+    },
+    "matched": {
+      "sequences": 120,
+      "families": {
+        "blur_creep": {
+          "sequences": 40,
+          "sequence_false_release": -0.2,
+          "frame_coverage": -0.07291666666666666,
+          "correct_release_per_frame": -0.04583333333333333
+        },
+        "fpn_ramp": {
+          "sequences": 40,
+          "sequence_false_release": 0.05,
+          "frame_coverage": 0.029166666666666664,
+          "correct_release_per_frame": 0.024999999999999994
+        },
+        "gain_ramp": {
+          "sequences": 40,
+          "sequence_false_release": -0.025,
+          "frame_coverage": 0.04791666666666667,
+          "correct_release_per_frame": 0.054166666666666675
+        }
+      },
+      "methods": {
+        "crc_temporal": {
+          "sequence_false_release": 0.025,
+          "frame_coverage": 0.04791666666666667,
+          "correct_release_per_frame": 0.04583333333333333,
+          "accepted_frames": 69,
+          "wrong_releases": 3,
+          "conditional_error": 0.043478260869565216
+        },
+        "crc_confidence": {
+          "sequence_false_release": 0.08333333333333333,
+          "frame_coverage": 0.04652777777777777,
+          "correct_release_per_frame": 0.034722222222222224,
+          "accepted_frames": 67,
+          "wrong_releases": 17,
+          "conditional_error": 0.2537313432835821
+        }
+      },
+      "paired_difference": {
+        "sequence_false_release": {
+          "estimate": -0.058333333333333334,
+          "ci_low": -0.11666666666666667,
+          "ci_high": 0.0
+        },
+        "frame_coverage": {
+          "estimate": 0.00138888888888889,
+          "ci_low": -0.018055555555555554,
+          "ci_high": 0.022222222222222223
+        },
+        "correct_release_per_frame": {
+          "estimate": 0.011111111111111112,
+          "ci_low": -0.006944444444444444,
+          "ci_high": 0.030555555555555555
+        }
+      }
+    }
+  },
+  "source_csv_sha256": "6639875c9190c4d653a743f0b2f72f94e4836051f577cacb2f223dafd85a8e98",
+  "analysis_sha256": "deb00104bc0aac0dcf9eceb4906c8bb046553a8127e484740abe453d00ac3e1b"
+}
