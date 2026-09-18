@@ -93,6 +93,8 @@ The five held-out composition families are `blur_noise`, `attenuation_contrast`,
 
 ## Sensor bench
 
+The web instrument requires Node.js 22.13 or newer (CI uses Node 24) and pnpm 11.19.0.
+
 The web lab replays exact frozen frames and exposes:
 
 - latent-target and detector-peak overlays;
